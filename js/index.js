@@ -1,10 +1,11 @@
 // Your code goes here
 
-//  Using the 10 unique events, find ways to update the DOM in creative ways. 
-//  For example you could change colors, animate objects, remove objects, etc.
-//  Nest two similar events somewhere in the site and prevent the event propagation properly
-//  Stop the navigation from items from refreshing the page by using preventDefault()
 const entireSite = document.querySelector('html');
+
+const navItems = document.querySelector('a');
+navItems.addEventListener('click', function(eventObject){
+    eventObject.preventDefault();
+});
 
 
 const imgMap = document.querySelector('.img-content');
@@ -21,6 +22,7 @@ const btn = document.querySelector('.btn');
 btn.addEventListener('dblclick', function(eventObject){
     console.log(`${eventObject} was dblclicked!`)
     btn.style.border = '5px solid red';
+    eventObject.stopPropagation();
 });
 
 
@@ -69,6 +71,11 @@ const buttonSection = document.querySelector('.content-pick');
 buttonSection.addEventListener('contextmenu', function(eventObject){
     console.log(`${eventObject}'s context menu was opened!`)
     btn.style.background = 'black';
+});
+
+buttonSection.addEventListener('dblclick', function(eventObject){
+    console.log(`${eventObject} was dblclicked!`)
+    btn.style.background = 'white';
 });
 
 
